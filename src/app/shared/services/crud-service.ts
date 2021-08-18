@@ -4,7 +4,7 @@ export abstract class CrudService<T> {
 
     constructor(
         public http: HttpClient,
-        public apiRessource
+        public apiRessource: String
     ) {
 
     }
