@@ -5,8 +5,10 @@ export abstract class CrudService<T> {
     constructor(
         public http: HttpClient,
         public apiRessource: String
-    ) {
+    ) { }
 
+    findOne(id: number): Promise {
+        return Promise
     }
 
 }
