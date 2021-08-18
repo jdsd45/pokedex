@@ -7,6 +7,11 @@ export abstract class CrudService<T> {
         public apiRessource: String
     ) { }
 
+    /**
+     * Retourne un élément
+     * @param id 
+     * @returns 
+     */
     findOne(id: number): Promise<Response> {
         let url = 'https://pokeapi.co/api/v2/pokemon-species/'
         return fetch(url + id)
