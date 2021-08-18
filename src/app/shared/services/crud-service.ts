@@ -7,8 +7,8 @@ export abstract class CrudService<T> {
         public apiRessource: String
     ) { }
 
-    findOne(id: number): Promise {
-        return Promise
+    findOne(id: number): Promise<T> {
+        return new Promise<T>
     }
 
 }
