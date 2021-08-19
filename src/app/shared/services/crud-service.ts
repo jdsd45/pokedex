@@ -1,7 +1,12 @@
-export abstract class CrudService<T> {
+import { environment } from "src/environments/environment";
+import { ApiService } from "./api-service";
+
+
+export abstract class CrudService {
 
     constructor(
-        public apiRessource: String
+        public apiRessource: String,
+        private apiService: ApiService
     ) { }
 
     /**
@@ -11,8 +16,17 @@ export abstract class CrudService<T> {
      */
     findOne(id: number): Promise<Response> {
         let url = 'https://pokeapi.co/api/v2/pokemon-species/'
-        return fetch(url + id)
+        return this.request(environment.apiUrl + id)
     }
+
+    findAll(): Promise<Response> {
+        return this.request(url);
+    }
+
+    request(apiRessource, params = {}): Promise<Response> {
+        return fetch(apiRessource, params)
+    }
+
 
 
 }
