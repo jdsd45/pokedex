@@ -4,7 +4,7 @@ import { ApiService } from "./api-service";
 export abstract class CrudService {
 
     constructor(
-        public apiRessource: String,
+        private apiRessource: string,
         private apiService: ApiService
     ) { }
 
@@ -17,8 +17,9 @@ export abstract class CrudService {
         return this.apiService.get(this.apiRessource + '/' + askItem)
     }
 
+
     findAll(): Promise<Response> {
-        return this.apiService.get(url);
+        return this.apiService.get(this.apiRessource);
     }
 
 
