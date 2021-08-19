@@ -1,4 +1,3 @@
-import { environment } from "src/environments/environment";
 import { ApiService } from "./api-service";
 
 
@@ -10,22 +9,18 @@ export abstract class CrudService {
     ) { }
 
     /**
-     * Retourne un élément
-     * @param id 
+     * Retourn un élement
+     * @param askItem 
      * @returns 
      */
-    findOne(id: number): Promise<Response> {
-        let url = 'https://pokeapi.co/api/v2/pokemon-species/'
-        return this.request(environment.apiUrl + id)
+    findOne(askItem: number | string): Promise<Response> {
+        return this.apiService.get(this.apiRessource + '/' + askItem)
     }
 
     findAll(): Promise<Response> {
-        return this.request(url);
+        return this.apiService.get(url);
     }
 
-    request(apiRessource, params = {}): Promise<Response> {
-        return fetch(apiRessource, params)
-    }
 
 
 
