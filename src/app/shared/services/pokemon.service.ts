@@ -1,9 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { CrudService } from './crud-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PokemonService {
+export class PokemonService extends CrudService {
 
-  constructor() { }
+  constructor(injector: Injector) {
+    super(environment.apiRessources.pokemon.pokemonSpecies, injector)
+  }
+
+
+
+
 }
