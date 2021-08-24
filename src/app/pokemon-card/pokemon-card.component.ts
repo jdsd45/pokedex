@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../shared/services/pokemon.service';
+import { Pokemon } from '../shared/models/pokemon';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -8,16 +9,15 @@ import { PokemonService } from '../shared/services/pokemon.service';
 })
 export class PokemonCardComponent implements OnInit {
 
-
+  pokemon: Pokemon
 
   constructor(
     private pokemonService: PokemonService
   ) { }
 
   ngOnInit(): void {
-    this.pokemonService.findAll().then(response => {
-      console.log(response)
-    })
+    this.pokemonService.findOne(3).subscribe(pokemon => this.pokemon = pokemon)
+    console.log('erferf')
   }
 
 }
