@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 export abstract class CrudService<T> {
 
     constructor(
-        private http: HttpClient,
-        private apiRessource: string,
+        protected http: HttpClient,
+        protected apiRessource: string,
     ) { }
 
     /**
