@@ -1,25 +1,27 @@
 import { HttpClient } from "@angular/common/http";
-import { Injector } from "@angular/core";
+import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
+import { map } from 'rxjs/operators';
 
 
-export abstract class CrudService {
+export abstract class CrudService<T> {
 
     constructor(
         private http: HttpClient,
         private apiRessource: string,
-    ) {  }
+    ) { }
 
     /**
      * Retourn un élement
      * @param askItem 
      * @returns 
      */
-    findOne(askItem: number | string): Promise<Response> {
-        return this.apiService.get(this.apiRessource + '/' + askItem)
+    findOne(askItem: number | string): Observable<T> {
+        return this.http.get<T>(environment.apiUrl + this.apiRessource + '/' + askItem);
     }
 
-    findAll(): Promise<Response> {
-        return this.apiService.get(this.apiRessource);
+    findAll(): Observable<T> {
+        return this.http.get<T>(environment.apiUrl + this.apiRessource);
     }
 
 
