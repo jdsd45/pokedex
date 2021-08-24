@@ -1,17 +1,13 @@
+import { HttpClient } from "@angular/common/http";
 import { Injector } from "@angular/core";
-import { ApiService } from "./api-service";
 
 
 export abstract class CrudService {
 
-    protected apiService: ApiService;
-
     constructor(
-        protected apiRessource: string,
-        protected injector: Injector
-    ) {
-        this.apiService = injector.get(ApiService);
-    }
+        private http: HttpClient,
+        private apiRessource: string,
+    ) {  }
 
     /**
      * Retourn un élement
