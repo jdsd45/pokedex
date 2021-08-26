@@ -16,8 +16,11 @@ export class PokemonCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.pokemonService.findOne(3).subscribe(pokemon => this.pokemon = pokemon)
-    console.log('erferf')
+    this.pokemonService.getPokemonByNameOrId(3)
+      .subscribe(p => {
+        this.pokemon = p
+        console.log(this.pokemon)
+      })
   }
 
 }
