@@ -9,7 +9,8 @@ export const environment = {
     pokemon: {
       pokemonSpecies: '/pokemon-species'
     }
-  }
+  },
+  language: 'fr'
 };
 
 /*
