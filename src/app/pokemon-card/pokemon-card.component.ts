@@ -9,18 +9,20 @@ import { Pokemon } from '../shared/models/pokemon';
 })
 export class PokemonCardComponent implements OnInit {
 
-  pokemon: Pokemon
+  pokemon: Pokemon | null;
 
   constructor(
     private pokemonService: PokemonService
-  ) { }
+  ) {
+    this.pokemon = null;
+  }
 
   ngOnInit(): void {
     this.pokemonService.getPokemonByNameOrId(3)
       .subscribe(p => {
         this.pokemon = p
-        console.log(this.pokemon)
       })
+
   }
 
 }
