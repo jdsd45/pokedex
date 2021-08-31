@@ -8,20 +8,20 @@ import { Pokemon } from '../shared/models/pokemon';
   styleUrls: ['./pokemon-card.component.scss']
 })
 export class PokemonCardComponent implements OnInit {
-  @Input() pokemon: Pokemon;
+  //@Input() pokemon: Pokemon;
 
-/*   constructor(
-    private pokemonService: PokemonService
-  ) {
-    //this.pokemon = null;
-  } */
+  /*   constructor(
+      private pokemonService: PokemonService
+    ) {
+      //this.pokemon = null;
+    } */
 
   ngOnInit(): void {
 
-/*     this.pokemonService.getPokemonByNameOrId(3)
-      .subscribe(p => {
-        this.pokemon = p
-      }) */
+    /*     this.pokemonService.getPokemonByNameOrId(3)
+          .subscribe(p => {
+            this.pokemon = p
+          }) */
 
   }
 

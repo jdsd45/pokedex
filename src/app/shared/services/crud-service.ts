@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, pipe } from "rxjs";
 import { environment } from "src/environments/environment";
 import { map } from 'rxjs/operators';
 
