@@ -21,7 +21,7 @@ export class PokemonService extends CrudService<Pokemon> {
         return this.findOne(pokemon);
     }
 
-    getPokemonList(): Observable<Pokemon> {
+    getPokemonList(): Observable<Pokemon[]> {
         return this.findAll();
     }
 

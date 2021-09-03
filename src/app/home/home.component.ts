@@ -11,7 +11,7 @@ import { PokemonService } from '../shared/services/pokemon.service';
 })
 export class HomeComponent implements OnInit {
 
-  //pokemons: Pokemon[] = [];
+  pokemons: Pokemon[] = [];
 
   constructor(
     private pokemonService: PokemonService,
@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.pokemonService.getPokemonList().subscribe(
       pokemons => {
-        console.log(pokemons)
+        this.pokemons = pokemons
+        console.log(this.pokemons)
+    
       }
     )
   }
