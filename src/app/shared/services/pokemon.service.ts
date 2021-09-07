@@ -9,7 +9,7 @@ import { map, tap } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class PokemonService extends CrudService<Pokemon> {
+export class PokemonService {
 
     constructor(
         protected http: HttpClient
@@ -24,5 +24,25 @@ export class PokemonService extends CrudService<Pokemon> {
     getPokemonList(): Observable<Pokemon[]> {
         return this.findAll();
     }
+
+
+    /**
+     * Retourne un élement
+     */
+    findOne(askItem: number | string): Observable<T> {
+        return this.http.get<T>(
+            environment.apiUrl + this.apiRessource + '/' + askItem
+        );
+    }
+
+    /**
+     * Retourne tous les éléments
+     */
+    findAll(): Observable<T[]> {
+        return this.http.get<{ count: number; next: string; results: T[] }>(
+            environment.apiUrl + this.apiRessource
+        ).pipe(map(r => r.results));
+    }
+
 
 }
