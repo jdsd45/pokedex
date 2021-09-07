@@ -11,13 +11,11 @@ import { map, tap } from 'rxjs/operators';
 export class PokemonService {
 
     private apiRessource: string;
-    private http;
 
     constructor(
-        http: HttpClient
+        private http: HttpClient
     ) {
         this.apiRessource = environment.apiRessources.pokemon.pokemonSpecies;
-        this.http = http;
     }
 
     getPokemonByNameOrId(pokemon: string | number): Observable<Pokemon> {
