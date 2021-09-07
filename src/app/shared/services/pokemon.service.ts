@@ -11,11 +11,13 @@ import { map, tap } from 'rxjs/operators';
 export class PokemonService {
 
     private apiRessource: string;
+    private http;
 
     constructor(
         http: HttpClient
     ) {
         this.apiRessource = environment.apiRessources.pokemon.pokemonSpecies;
+        this.http = http;
     }
 
     getPokemonByNameOrId(pokemon: string | number): Observable<Pokemon> {
@@ -30,8 +32,8 @@ export class PokemonService {
     /**
      * Retourne un élement
      */
-    findOne(askItem: number | string): Observable<T> {
-        return this.http.get<T>(
+    findOne(askItem: number | string): Observable<Pokemon> {
+        return this.http.get<Pokemon>(
             environment.apiUrl + this.apiRessource + '/' + askItem
         );
     }
@@ -39,8 +41,8 @@ export class PokemonService {
     /**
      * Retourne tous les éléments
      */
-    findAll(): Observable<T[]> {
-        return this.http.get<{ count: number; next: string; results: T[] }>(
+    findAll(): Observable<Pokemon[]> {
+        return this.http.get<{ count: number; next: string; results: Pokemon[] }>(
             environment.apiUrl + this.apiRessource
         ).pipe(map(r => r.results));
     }
