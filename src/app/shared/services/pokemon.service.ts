@@ -28,7 +28,6 @@ export class PokemonService {
         return this.findAll();
     }
 
-
     /**
      * Retourne un élement
      */
